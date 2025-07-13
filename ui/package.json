@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx webpack watch",
     "serve": "nodemon dist/bundle.js",
-    "start": "concurrently \"npm run build\" \"npm run serve\"",
+    "start": "npx webpack && concurrently \"npm run build\" \"npm run serve\"",
     "build:prod": "npx webpack",
     "serve:prod": "node dist/bundle.js"
   },
