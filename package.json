@@ -4,7 +4,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "startAll": ""
+    "start-ui": "cd ui && npm run start",
+    "start-users": "cd services/users && mvnw clean package -DskipTests && java -jar target/users-0.0.1-SNAPSHOT.jar",
+    "start-chats": "cd services/chats && mvnw clean package -DskipTests && java -jar target/chats-0.0.1-SNAPSHOT.jar",
+    "start-posts": "cd services/posts && mvnw clean package -DskipTests && java -jar target/posts-0.0.1-SNAPSHOT.jar",
+    "start-interactions": "cd services/interactions && mvnw clean package -DskipTests && java -jar target/interactions-0.0.1-SNAPSHOT.jar",
+    "startAll": "concurrently \"npm run start-ui\" \" npm run start-users\" \"npm run start-chats\" \"npm run start-posts\" \"npm run start-interactions\""
   },
   "dependencies": {
     "concurrently": "^9.2.0"
