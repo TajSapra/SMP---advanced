@@ -1,8 +1,10 @@
-import express from "express"
-import React from 'react'
+import express from "express";
+import React from "react";
 import { renderToString } from 'react-dom/server'
-import App from '/src/app'
-
+import { Provider } from 'react-redux'
+import { StaticRouter } from 'react-router-dom/server'
+import App from './src/app.jsx'
+import store from './src/store'
 
 const app=express()
 const port=3000
@@ -27,7 +29,13 @@ const renderedHTML = (jsx) => {
 }
 
 app.get('*', (req, res) => {
-    const jsx = renderToString(<App />);
+    const jsx = renderToString(
+        <Provider store={store}>
+            <StaticRouter location={req.path}>
+                <App />
+            </StaticRouter>
+        </Provider>
+    );
 
     res.send(renderedHTML(jsx));
 });

@@ -18,6 +18,13 @@ const serverConfig={
                 exclude:path.resolve(__dirname, './node_modules')
             },
             {
+                test: /\.jsx$/,
+                use:{
+                    loader:'babel-loader'
+                },
+                exclude:path.resolve(__dirname, './node_modules')
+            },
+            {
                 test: /\.css$/,
                 use:[
                     'style-loader',
@@ -41,6 +48,13 @@ const clientConfig={
         rules:[
             {
                 test: /\.js$/,
+                use:{
+                    loader:'babel-loader'
+                },
+                exclude:path.resolve(__dirname, './node_modules')
+            },
+            {
+                test: /\.jsx$/,
                 use:{
                     loader:'babel-loader'
                 },
