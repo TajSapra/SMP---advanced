@@ -11,7 +11,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.mysmppracticeadvwebdev.users.repository")
 @ComponentScan(basePackages = {
 		"com.mysmppracticeadvwebdev.users",
-		"com.mysmppracticeadvwebdev.shared"
+		"com.mysmppracticeadvwebdev.shared",
+		"com.mysmppracticeadvwebdev.util",
+		"com.mysmppracticeadvwebdev.annotations"
 })
 public class UsersApplication {
 

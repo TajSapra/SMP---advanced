@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { LoginPageComponent } from '../shared/Login.jsx';
 
 const HomePageComponent = () => {
     const { isLoggedIn, user } = useSelector((state) => state.general);
@@ -13,6 +14,7 @@ const HomePageComponent = () => {
             <div>
                 Welcome to SMP! Lets get you logged in.
             </div>
+            <LoginPageComponent />
         </>
     );
 };

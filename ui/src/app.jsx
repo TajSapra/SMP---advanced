@@ -3,25 +3,25 @@ import routes from './routes';
 import {Routes, Route} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { getUserDetails } from './actions/users';
-import { getLocalStorageItem } from './util/browser-storage';
+import { getLocalStorageItem, removeLocalStorageItem } from './util/browser-storage';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    const user = getLocalStorageItem('user')
-    console.log('user', user);
-    if(!user){
+    const token = getLocalStorageItem('token');
+    if(!token){
       dispatch({
         type: 'SET_LOGIN_DETAILS',
         payload: {
           isLoggedIn: false,
-          user: null
         }
       })
+      removeLocalStorageItem('token');
+      removeLocalStorageItem('user');
     }
     else{
-      dispatch(getUserDetails(user))    
+      dispatch(getUserDetails())    
     }
     
   }, [])

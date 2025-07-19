@@ -44,4 +44,12 @@ public class UserEntity {
     public String getPassword(){
         return password;
     }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public String getId(){
+        return id;
+    }
 }

@@ -1,12 +1,17 @@
 package com.mysmppracticeadvwebdev.users.controller.v1;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.mysmppracticeadvwebdev.users.DTO.GetUserDTO;
 import com.mysmppracticeadvwebdev.users.DTO.CreateUserDTO;
 import com.mysmppracticeadvwebdev.users.service.UserService;
+import com.mysmppracticeadvwebdev.util.JwtUtil;
+import io.swagger.v3.oas.annotations.headers.Header;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpHeaders;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @GetMapping(path = "")
     public Map<String, Object> getUsers(){
@@ -31,14 +39,17 @@ public class UserController {
         return response;
     }
 
-    @GetMapping(path = "/{id}")
-    public GetUserDTO getUser(@PathVariable String id){
+    @GetMapping(path = "/details")
+    public GetUserDTO getUser(@RequestHeader("Authorization") String authToken){
+        String jwt = authToken.split("Bearer ")[1];
+        Map<String, String> userDetails = jwtUtil.validateTokenAndRetrieveDetails(jwt);
+        String id = userDetails.get("user_id");
         System.out.println(id);
         return this.userService.getUser(id);
     }
 
     @PostMapping(path = "/authenticate")
-    public Boolean authenticateUser(@RequestBody Map<String, String> loginCredentials){
+    public Map<String, Object> authenticateUser(@RequestBody Map<String, String> loginCredentials){
         return this.userService.authenticateUser(loginCredentials);
     }
 }
