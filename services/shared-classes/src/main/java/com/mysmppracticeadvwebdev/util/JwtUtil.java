@@ -27,7 +27,7 @@ public class JwtUtil {
 
     public String generateToken(String email, String id) throws IllegalArgumentException, JWTCreationException {
         long currentTime = new Date().getTime();
-        long expiryTime = currentTime + (1000*60*5);
+        long expiryTime = currentTime + (1000*60*60);
         return JWT
                 .create()
                 .withSubject(USER_SUBJECT)

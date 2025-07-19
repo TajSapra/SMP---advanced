@@ -7,7 +7,7 @@ const HomePageComponent = () => {
     console.log("HomePageComponent loaded");
     return isLoggedIn?(
         <div>
-            Hi {user ? user.name : 'Guest'}, welcome to the home page!
+            Hi { user.name }, welcome to the home page!
         </div>
     ): (
         <>
