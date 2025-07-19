@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class GetUserDTO {
 
     @NotBlank(message = "Email of user cannot be blank")
     @Email(message = "Email should be a valid mail id")
@@ -25,8 +25,4 @@ public class UserDTO {
     public String phone_number; /// use for 2FA using whatsapp. Add a communications service later
 
     public Boolean is_phone_verified;
-
-    @NotBlank(message = "Phone Number of a user cannot be blank")
-    public String password;
-
 }

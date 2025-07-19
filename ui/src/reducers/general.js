@@ -1,12 +1,13 @@
 import { createReducer } from "../util/store-util";
 const initialState = {
-    testValue:null,
+    isLoggedIn: false,
+    user: null
 }
 export default createReducer(initialState, {
-    TEST_ACTION: (state, payload) => {
+    SET_LOGIN_DETAILS: (state, payload) => {
         return {
             ...state,
-            testValue: payload
+            ...payload,
         }
     }
 })

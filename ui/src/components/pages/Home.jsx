@@ -1,11 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 const HomePageComponent = () => {
+    const { isLoggedIn, user } = useSelector((state) => state.general);
     console.log("HomePageComponent loaded");
-    return (
+    return isLoggedIn?(
         <div>
-            <h1>Home Page</h1>
-            <p>Welcome to the home page!</p>
+            Hi {user ? user.name : 'Guest'}, welcome to the home page!
         </div>
+    ): (
+        <>
+            <div>
+                Welcome to SMP! Lets get you logged in.
+            </div>
+        </>
     );
 };
 export default HomePageComponent;

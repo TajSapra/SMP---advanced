@@ -1,2 +1,11 @@
 node_modules
 .idea
+sdks/chats/chats-sdk
+sdks/chats/api-docs.json
+sdks/interactions/interactions-sdk
+sdks/interactions/api-docs.json
+sdks/posts/posts-sdk
+sdks/posts/api-docs.json
+sdks/users/users-sdk
+sdks/users/api-docs.json
+sdks/output/*
