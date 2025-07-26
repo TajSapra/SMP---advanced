@@ -1,4 +1,4 @@
-package com.mysmppracticeadvwebdev.users.config;
+package com.mysmppracticeadvwebdev.users.Configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

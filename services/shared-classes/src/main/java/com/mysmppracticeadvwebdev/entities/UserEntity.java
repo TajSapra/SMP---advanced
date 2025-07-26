@@ -1,9 +1,11 @@
 package com.mysmppracticeadvwebdev.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -40,6 +42,13 @@ public class UserEntity {
     @ManyToMany(mappedBy = "followers")
     private Set<UserEntity> following;
 
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnore
+    private Set<PostEntity> posts;
+
+    @OneToMany(mappedBy = "uploadedBy", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<ResourceEntity> resources;
 
     public String getPassword(){
         return password;
@@ -52,4 +61,5 @@ public class UserEntity {
     public String getId(){
         return id;
     }
+
 }

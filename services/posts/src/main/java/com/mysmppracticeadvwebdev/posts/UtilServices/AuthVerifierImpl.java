@@ -1,8 +1,8 @@
-package com.mysmppracticeadvwebdev.users.UtilServices;
+package com.mysmppracticeadvwebdev.posts.UtilServices;
 
+import com.mysmppracticeadvwebdev.dto.GetUserDTO;
 import com.mysmppracticeadvwebdev.entities.UserEntity;
-import com.mysmppracticeadvwebdev.users.DTO.GetUserDTO;
-import com.mysmppracticeadvwebdev.users.repository.UserRepository;
+import com.mysmppracticeadvwebdev.posts.repository.UserRepository;
 import com.mysmppracticeadvwebdev.util.AuthVerifier;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;

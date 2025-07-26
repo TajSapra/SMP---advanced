@@ -15,6 +15,7 @@
         <module>posts</module>
         <module>interactions</module>
         <module>chats</module>
+        <module>storage</module>
     </modules>
 
     <properties>

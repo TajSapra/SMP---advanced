@@ -1,15 +1,12 @@
 import { config } from "../config"
-import { setLocalStorageItem } from "../util/browser-storage";
+import { removeLocalStorageItem, setLocalStorageItem } from "../util/browser-storage";
 
 export const getUserDetails = (userId) => {
     return (dispatch, getState, {fetch})=>{
-        const token = localStorage.getItem('token');
-        console.log(token)
         let res = fetch(`${config.usersBaseUrl}/v1/users/details`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
             }
         })
         res.then(response => {
@@ -45,6 +42,25 @@ export const authenticateUser = (email, password) => {
                     user: response.data.user
                 }
             });
+        }).catch(error => {
+            console.error(error);
+            removeLocalStorageItem('token');
+        });
+    }
+}
+
+export const registerUser = (email, password, name, phone) => {
+    return (dispatch, getState, {fetch})=>{
+        let res = fetch({
+            url: `${config.usersBaseUrl}/v1/users`,
+            method: 'POST',
+            data: {email, password, name, phone_number: phone, is_phone_verified:false},
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        res.then(response => {
+            console.log("User registered successfully", response.data);
         }).catch(error => {
             console.error(error);
         });

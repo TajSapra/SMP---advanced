@@ -30,6 +30,7 @@ public class AuthAspect {
 
     @Before("requireAuthPointcut()")
     public void authorize() {
+        System.out.println("verifying shared classes start");
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -40,6 +41,7 @@ public class AuthAspect {
         Map<String, String> user_details = jwtUtil.validateTokenAndRetrieveDetails(token);
 
         request.setAttribute("user_details", user_details);
+        System.out.println("verifying shared classes complete");
 
         authVerifier.verifyUser(user_details);
     }

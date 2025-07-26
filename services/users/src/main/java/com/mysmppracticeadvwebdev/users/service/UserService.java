@@ -40,9 +40,9 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public CreateUserDTO createUser(CreateUserDTO createUserDTO){
+    public GetUserDTO createUser(CreateUserDTO createUserDTO){
         UserEntity savedUser = this.userRepository.save(modelMapper.map(createUserDTO, UserEntity.class));
-        return modelMapper.map(savedUser, CreateUserDTO.class);
+        return modelMapper.map(savedUser, GetUserDTO.class);
     }
 
     public GetUserDTO getUser(String id){

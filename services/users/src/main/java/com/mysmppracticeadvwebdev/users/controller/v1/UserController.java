@@ -1,17 +1,14 @@
 package com.mysmppracticeadvwebdev.users.controller.v1;
 
-import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.mysmppracticeadvwebdev.annotations.RequireAuth;
 import com.mysmppracticeadvwebdev.users.DTO.GetUserDTO;
 import com.mysmppracticeadvwebdev.users.DTO.CreateUserDTO;
 import com.mysmppracticeadvwebdev.users.service.UserService;
 import com.mysmppracticeadvwebdev.util.JwtUtil;
-import io.swagger.v3.oas.annotations.headers.Header;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpHeaders;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +36,7 @@ public class UserController {
         return response;
     }
 
+    @RequireAuth
     @GetMapping(path = "/details")
     public GetUserDTO getUser(@RequestHeader("Authorization") String authToken){
         String jwt = authToken.split("Bearer ")[1];
