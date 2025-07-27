@@ -1,5 +1,6 @@
 package com.mysmppracticeadvwebdev.users;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -13,8 +14,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 		"com.mysmppracticeadvwebdev.users",
 		"com.mysmppracticeadvwebdev.shared",
 		"com.mysmppracticeadvwebdev.util",
-		"com.mysmppracticeadvwebdev.annotations"
+		"com.mysmppracticeadvwebdev.annotations",
+		"com.mysmppracticeadvwebdev.messaging",
 })
+@EnableRabbit
 public class UsersApplication {
 
 	public static void main(String[] args) {

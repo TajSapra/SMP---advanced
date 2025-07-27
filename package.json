@@ -8,9 +8,10 @@
     "start-users": "cd services/users && java -jar target/users-0.0.1-SNAPSHOT.jar",
     "start-chats": "cd services/chats && java -jar target/chats-0.0.1-SNAPSHOT.jar",
     "start-storage": "cd services/storage && java -jar target/storage-0.0.1-SNAPSHOT.jar",
+    "start-rabbitmq": "rabbitmq-service start",
     "start-posts": "cd services/posts && java -jar target/posts-0.0.1-SNAPSHOT.jar",
     "start-interactions": "cd services/interactions && java -jar target/interactions-0.0.1-SNAPSHOT.jar",
-    "startAll": "concurrently \"npm run start-ui\" \"npm run startServices\"",
+    "startAll": "concurrently \"npm run start-ui\" \"npm run startServices\" \"npm run start-rabbitmq\"",
     "startServices": "npm run refresh-shared-classes && concurrently \"npm run start-users\" \"npm run start-chats\" \"npm run start-storage\" \"npm run start-posts\" \"npm run start-interactions\"",
     "refresh-shared-classes":"cd services && mvnw clean install -DskipTests"
   },
